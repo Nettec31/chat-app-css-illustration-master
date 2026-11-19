@@ -17,7 +17,7 @@ This is my solution to the **Chat app CSS illustration** challenge on Frontend M
 
 ## Challenges and How They Were Addressed
 
-- **Switching CSS Approaches:** I initially started exploring Bootstrap, then decided to use Tailwind CSS instead (with instructor permission) to keep styling consistent and clean across the custom bubbles, gradients, and layout.
+- **Switching CSS Approaches:** I initially started exploring Bootstrap, then decided to use Tailwind CSS instead to keep styling consistent and clean across the custom bubbles, gradients, and layout.
 - **Responsive Spacing & Overflow:** Tuned spacing and pill background positioning across viewport sizes so the layout stays centered and free of horizontal overflow.
 
 ## Reflection
