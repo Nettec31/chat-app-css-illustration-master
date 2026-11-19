@@ -1,63 +1,257 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | Chat app CSS illustration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style type="text/tailwindcss">
+      @theme {
+        /* Typography */
+        --font-sans: "Rubik", system-ui, -apple-system, sans-serif;
+
+        /* Primary Text Colors */
+        --color-purple-300: hsl(276, 100%, 81%);
+        --color-purple-600: hsl(276, 55%, 52%);
+        --color-gray-500: hsl(270, 7%, 64%);
+        --color-gray-300: hsl(206, 6%, 79%);
+        --color-purple-950: hsl(271, 36%, 24%);
+
+        /* Primary Gradients */
+        --color-pink-500: hsl(293, 100%, 63%);
+        --color-purple-500: hsl(264, 100%, 61%);
+
+        /* Secondary Colors */
+        --color-white: hsl(0, 100%, 100%);
+        --color-gray-100: hsl(270, 20%, 96%);
+        --color-pink-400: hsl(289, 100%, 72%);
+      }
+
+      @keyframes chatFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .chat-item {
+          opacity: 0;
+          animation: chatFadeUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          animation-delay: var(--delay, 0ms);
+        }
+      }
+    </style>
   </head>
-  <body class="container-md py-5">
-    
-    <main>
-      <div class="row align-items-center justify-content-center g-5">
-        
-        
-        <div class="col-lg-5">
-          <div class="card p-3 shadow">
-          
-            <header class="d-flex align-items-center mb-3">
-              
-            <img src="./images/avatar.jpg" alt="Samuel Green" class="rounded-circle" width="30" height="30">
-            
-            <div class="ms-2">
-            
-            <h2 class="h6 mb-0">Samuel Green</h2>
-            <p class="small text-muted mb-0">Available to Walk</p> 
-            </div>
+
+  <body
+    class="relative flex min-h-dvh flex-col justify-between overflow-x-clip bg-white font-sans text-[16px] leading-relaxed text-gray-500 antialiased"
+  >
+    <!-- Decorative Pill Background Shapes -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed -top-36 -left-40 -z-10 h-[620px] w-[300px] rounded-full bg-gradient-to-b from-pink-500 to-purple-500 lg:-top-24 lg:-left-20 lg:h-[780px] lg:w-[440px]"
+    ></div>
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed -right-44 -bottom-44 -z-10 h-[620px] w-[300px] rounded-full bg-purple-300/15 lg:-right-28 lg:-bottom-28 lg:h-[780px] lg:w-[440px]"
+    ></div>
+
+    <!-- Main Content -->
+    <main class="mx-auto flex w-full max-w-5xl flex-1 items-center px-6 py-14 lg:py-16">
+      <div class="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
+        <!-- Phone Mockup Column -->
+        <div class="flex justify-center lg:col-span-5 lg:justify-end">
+          <div
+            class="w-full max-w-[268px] rounded-[32px] border-[10px] border-white bg-gray-100 px-2.5 pb-2.5 shadow-[0_20px_42px_hsl(271_36%_24%/0.16)]"
+          >
+            <!-- Top App Bar + Notch -->
+            <header
+              class="relative -mx-2.5 mb-2.5 flex items-center justify-between rounded-t-[22px] rounded-br-[6px] rounded-bl-[6px] bg-gradient-to-r from-pink-500 to-purple-500 px-3.5 pt-6 pb-2.5 text-white shadow-md"
+            >
+              <!-- Speaker Notch -->
+              <span
+                aria-hidden="true"
+                class="absolute top-0 left-1/2 h-4 w-36 -translate-x-1/2 rounded-b-xl bg-white"
+              ></span>
+
+              <div class="flex items-center gap-2">
+                <span aria-hidden="true" class="text-sm leading-none font-medium text-white/90">
+                  ‹
+                </span>
+                <img
+                  src="./images/avatar.jpg"
+                  alt="Samuel Green"
+                  class="h-6 w-6 rounded-full border border-white object-cover"
+                />
+                <div>
+                  <h2 class="text-[11px] leading-tight font-medium text-white">
+                    Samuel Green
+                  </h2>
+                  <p class="text-[8.5px] leading-tight text-purple-300">
+                    Available to Walk
+                  </p>
+                </div>
+              </div>
+
+              <span aria-hidden="true" class="text-xs leading-none text-white/90">
+                ⋮
+              </span>
             </header>
-            <p>That sounds great. I’d be happy with that.</p>
-            <p>Could you send over some pictures of your dog, please?</p>
 
-            <p class="align-self-end">Here are a few pictures. She’s a happy girl!</p>
-            <p class="align-self-end">Can you make it?</p>
+            <!-- Messages Feed -->
+            <div class="flex flex-col gap-2 text-[9.5px] leading-[1.35]">
+              <div
+                style="--delay: 100ms"
+                class="chat-item max-w-[68%] rounded-t-xl rounded-br-xl rounded-bl-sm bg-purple-300/20 px-2.5 py-1.5 text-purple-600"
+              >
+                <p>That sounds great. I’d be happy with that.</p>
+              </div>
 
-            <p>She looks so happy! The time we discussed works. How long shall I take her out for?</p>
+              <div
+                style="--delay: 240ms"
+                class="chat-item max-w-[68%] rounded-t-xl rounded-br-xl rounded-bl-sm bg-purple-300/20 px-2.5 py-1.5 text-purple-600"
+              >
+                <p>Could you send over some pictures of your dog, please?</p>
+              </div>
 
-            <p>30 minute walk $29</p>
-            <p>1 hour walk $49</p>
+              <!-- Dog Photos -->
+              <div
+                style="--delay: 420ms"
+                class="chat-item mt-0.5 flex justify-end gap-2"
+              >
+                <img
+                  src="./images/dog-image-1.jpg"
+                  alt="Dog smiling outdoors"
+                  class="h-10 w-10 rounded-[10px] object-cover shadow-sm"
+                />
+                <img
+                  src="./images/dog-image-2.jpg"
+                  alt="Dog lying on ground"
+                  class="h-10 w-10 rounded-[10px] object-cover shadow-sm"
+                />
+                <img
+                  src="./images/dog-image-3.jpg"
+                  alt="Dog holding a stick"
+                  class="h-10 w-10 rounded-[10px] object-cover shadow-sm"
+                />
+              </div>
 
-            <div>Type a message…</div>
+              <!-- Outgoing Messages -->
+              <div
+                style="--delay: 600ms"
+                class="chat-item max-w-[68%] self-end rounded-t-xl rounded-br-sm rounded-bl-xl bg-white px-2.5 py-1.5 text-gray-500 shadow-sm"
+              >
+                <p>Here are a few pictures. She’s a happy girl!</p>
+              </div>
+
+              <div
+                style="--delay: 760ms"
+                class="chat-item max-w-[68%] self-end rounded-t-xl rounded-br-sm rounded-bl-xl bg-white px-2.5 py-1.5 text-gray-500 shadow-sm"
+              >
+                <p>Can you make it?</p>
+              </div>
+
+              <!-- Incoming Follow-Up -->
+              <div
+                style="--delay: 940ms"
+                class="chat-item mt-0.5 max-w-[68%] rounded-t-xl rounded-br-xl rounded-bl-sm bg-purple-300/20 px-2.5 py-1.5 text-purple-600"
+              >
+                <p>She looks so happy! The time we discussed works. How long shall I take her out for?</p>
+              </div>
+
+              <!-- Walk Pricing Options -->
+              <div
+                style="--delay: 1120ms"
+                class="chat-item flex max-w-[78%] items-center justify-between rounded-t-xl rounded-br-xl rounded-bl-sm bg-gradient-to-r from-pink-500 to-purple-500 px-2.5 py-2 text-white shadow-sm"
+              >
+                <div class="flex items-center gap-2">
+                  <span
+                    aria-hidden="true"
+                    class="h-3 w-3 shrink-0 rounded-full border border-pink-400"
+                  ></span>
+                  <span class="text-[9px] font-normal text-white/90">30 minute walk</span>
+                </div>
+                <strong class="text-xs font-bold text-white">$29</strong>
+              </div>
+
+              <div
+                style="--delay: 1280ms"
+                class="chat-item flex max-w-[78%] items-center justify-between rounded-t-xl rounded-br-xl rounded-bl-sm bg-gradient-to-r from-pink-500 to-purple-500 px-2.5 py-2 text-white shadow-sm"
+              >
+                <div class="flex items-center gap-2">
+                  <span
+                    aria-hidden="true"
+                    class="h-3 w-3 shrink-0 rounded-full border border-pink-400"
+                  ></span>
+                  <span class="text-[9px] font-normal text-white/90">1 hour walk</span>
+                </div>
+                <strong class="text-xs font-bold text-white">$49</strong>
+              </div>
+            </div>
+
+            <!-- Message Input -->
+            <form
+              onsubmit="return false;"
+              class="mt-2.5 flex items-center justify-between rounded-full bg-white py-1 pr-1 pl-3.5 shadow-sm"
+            >
+              <label for="message-input" class="sr-only">Type a message</label>
+              <input
+                id="message-input"
+                type="text"
+                placeholder="Type a message…"
+                class="w-full bg-transparent text-[9.5px] text-purple-950 placeholder:text-gray-300 focus:outline-none"
+              />
+              <button
+                type="submit"
+                aria-label="Send message"
+                class="flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center rounded-full bg-purple-950 text-xs leading-none font-bold text-white"
+              >
+                ›
+              </button>
+            </form>
           </div>
         </div>
 
-    
-        <div class="col-lg-6">
-          <h1 class="row align-items-center justify-content-center g-5">Simple booking</h1>
-          <p>
-            Stay in touch with our dog walkers through the chat interface. This makes it easy to 
-            discuss arrangements and make bookings. Once the walk has been completed you can rate 
+        <!-- Copy Column -->
+        <section class="text-center lg:col-span-7 lg:pl-6 lg:text-left">
+          <h1 class="mb-4 text-[2.25rem] font-medium tracking-tight text-purple-950">
+            Simple booking
+          </h1>
+          <p class="mx-auto max-w-[44ch] text-[16px] leading-[1.75] font-normal text-gray-500 lg:mx-0">
+            Stay in touch with our dog walkers through the chat interface. This makes it easy to
+            discuss arrangements and make bookings. Once the walk has been completed you can rate
             your walker and book again all through the chat.
           </p>
-        </div>
-
+        </section>
       </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
-
-    <footer class="attribution mt-5 text-center">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
+    <!-- Attribution -->
+    <footer class="px-4 py-6 text-center text-xs text-gray-500">
+      Challenge by
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        rel="noreferrer"
+        class="font-medium text-purple-600 underline"
+      >
+        Frontend Mentor
+      </a>.
+      Coded by <a href="#" class="font-medium text-purple-600 underline">Your Name Here</a>.
     </footer>
   </body>
 </html>
